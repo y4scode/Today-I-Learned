@@ -1,0 +1,57 @@
+import { useState } from "react";
+import type { Fact } from "./types";
+import Header from "./components/Header";
+import FactList from "./components/FactList";
+
+const INITIAL_FACTS: Fact[] = [{
+    id: 1,
+    text: 'React foi criado e liberado pelo Facebook em 2013 como open source.',
+    source: 'https://react.dev',
+    category: 'technology',
+    votes_interesting: 23,
+    votes_mindblowing: 9,
+    votes_false: 1,
+    created_at: '2026-05-12T11:16:00-03:00'
+}, {
+    id: 2,
+    text: 'O cérebro humano tem aproximadamente 86 bilhões de neurônios.',
+    source: 'https://www.ncbi.nlm.nih.gov/',
+    category: 'science',
+    votes_interesting: 41,
+    votes_mindblowing: 22,
+    votes_false: 0,
+    created_at: '2026-05-12T11:20:00-03:00'
+}, {
+    id:3,
+    text: 'O Brasil é o maior produtor de café a mais de 150 anos.',
+    source: 'https://www.embrapa.br/',
+    category: 'history',
+    votes_interesting: 18,
+    votes_mindblowing: 8,
+    votes_false: 5,
+    created_at: '2026-05-12T11:22:00-03:00'
+}];
+
+export default function App() {
+    const [facts, setFacts] = useState<Fact[]>(INITIAL_FACTS);
+    const [currentCategory, setCurrentCategory] = useState<string>('all');
+    const [showForm, setShowForm] = useState<boolean>(false);
+
+    const displayedFacts = currentCategory === 'all'
+        ? facts
+        : facts.filter(fact => fact.category === currentCategory);
+
+    function handleToggleForm() {
+        setShowForm(show => !show);
+    };
+
+    return (
+         <>
+            <Header showForm={showForm} onToggleForm={handleToggleForm}/>
+            {showForm && <p>Aqui conterá um formulário</p>}
+            <main>
+                <FactList facts={displayedFacts} />
+            </main>
+        </>
+    )
+}
