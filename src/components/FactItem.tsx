@@ -14,11 +14,11 @@ export default function FactItem({ fact }: FactItemProps) {
     <>
       <li className="bg-stone-700 py-4 px-6 flex gap-6 items-center justify-between rounded-2xl">
         <div className="flex gap-3">
-          <p>{ fact.text }</p>
+          <p className="text-[20px]">{ fact.text }</p>
           <a href={ fact.source } target="_blank" className="text-stone-400 capitalize hover:text-sky-600 transition duration-300">(Fonte)</a>
         </div>
         
-        <span>{ category?.label }</span>
+        <span className={`${category?.color} text-[14px] uppercase pt-0.75 px-2.5 rounded-full `}>{ category?.label }</span>
       </li>
     </>
   );

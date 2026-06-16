@@ -12,5 +12,5 @@ p, a {
 }
 
 @utility btn-h {
-    @apply transform transition duration-300 hover:scale-105 hover:-rotate-2 cursor-pointer
+    @apply transform transition duration-300 hover:scale-105 hover:-rotate-2 cursor-pointer rounded-full uppercase
 }
